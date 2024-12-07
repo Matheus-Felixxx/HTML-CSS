@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabelas Responsivas</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        table{
+            width: 500px;
+            border-collapse: collapse;
+            position: relative;
+        }
+        td, th{
+            border: 1px solid black;
+            padding: 10px;
+        }
+        caption{
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 10px;
+            background-color: lightgray;
+        }
+        thead, tfoot{
+            background-color: rgb(26, 26, 26);
+            color: white;
+        }
+        thead > tr > th{
+            position: sticky;
+            top: -1px;
+            background-color: rgb(66, 66, 66);
+        }
+        tbody > tr:nth-child(even){
+            background-color: rgb(255, 255, 255);
+        }
+        div#container{
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tabelas em Telas pequenas</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt iste autem reprehenderit voluptate? In, incidunt, aliquid veritatis quaerat voluptates veniam autem optio, exercitationem eligendi ex laborum quam quos sit alias.</p>
+    <div id="container">
+        <table>
+            <caption>Tabelas Responsivas</caption>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Jan</th>
+                    <th>Fev</th>
+                    <th>Mar</th>
+                    <th>Abr</th>
+                    <th>Mai</th>
+                    <th>Jun</th>
+                    <th>Jul</th>
+                    <th>Ago</th>
+                    <th>Set</th>
+                    <th>Out</th>
+                    <th>Nov</th>
+                    <th>Dez</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Produto</th>
+                    <th>Janeiro</th>
+                    <th>Fevereiro</th>
+                    <th>Março</th>
+                    <th>Abril</th>
+                    <th>Maio</th>
+                    <th>Junho</th>
+                    <th>Julho</th>
+                    <th>Agosto</th>
+                    <th>Setembro</th>
+                    <th>Outubro</th>
+                    <th>Novembro</th>
+                    <th>Dezembro</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>Playstation 5</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>IPhone 13</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Placa de vídeo <br>RTX 4090</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Óculos Juliet</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Android TV</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung Galaxy <br>S20</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>IPad mini</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Home Theater</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Máquina de <br>lavar</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Som de bar</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>4</td>
+                        <td>9</td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>11</td>
+                        <td>22</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
