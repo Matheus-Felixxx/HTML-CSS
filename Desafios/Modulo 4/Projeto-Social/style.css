@@ -13,7 +13,7 @@ iframe{
     width: 16vw;
     height: 53vh;
     padding: 10px;
-    border-radius: 5%;
+    vertical-align: auto;
 
 }
 section > a > img{
