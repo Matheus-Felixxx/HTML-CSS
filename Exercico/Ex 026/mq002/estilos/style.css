@@ -1,2 +1,20 @@
 @charset "UFT-8";
 /*Configurações Gerais*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html, body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #223EFF
+    ;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+h1{
+    color: whitesmoke;
+    text-shadow: 2px 2px 0px #0c175c;
+    padding: 10px;
+}
