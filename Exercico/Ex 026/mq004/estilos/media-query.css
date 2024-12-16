@@ -1,0 +1,76 @@
+@charset "UFT-8";
+
+/* Todas as demais mídias */
+
+/* Typical Device Breakpoint 
+Pequenas Telas: até 600px
+Celular: de 600px até 768px
+Tablet: 768px até 922px
+Desktop: 922px até 1200px
+Grandes Telas: acima de 1200px
+*/
+
+@media print {
+    *{
+        font-family: 'Courier New', Courier, monospace;
+    }
+    
+    body{
+        background-image: url(../Imagem/back-print.jpg); 
+        
+        
+    }
+    main h1{
+        text-shadow: none;
+        color: black;
+    }
+    main{
+        border: 2px solid black;
+    }
+    main::after{
+        content: 'Essa impressão foi feita através do site Matheus-Felixxx.github.io';
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 922px) { /* TABLET */
+    body{
+        background-image: url(../Imagem/back-tablet.jpg);
+    }
+#phone {display: 
+none;}
+#tablet{display: block;}
+#print{display: none;}
+#pc{display: none;}
+#tv{display: none;}
+}
+
+@media screen and (min-width: 922px) and (max-width: 1200px) {
+    body{
+        background-image: url(../Imagem/back-pc.jpg);
+    }
+    #phone {display: 
+        none;}
+        #tablet{display: none;}
+        #print{display: none;}
+        #pc{display: block;}
+        #tv{display: none;}
+        }
+
+ /* DESKTOP */
+
+    
+
+@media screen and (min-width: 1200px){ /* GRANDES TELAS */
+
+        body{
+            background-image: url(../Imagem/back-tv.jpg);
+        }
+
+        #phone {display: none;}
+        #tablet{display: none;}
+        #print{display: none;}
+        #pc{display: none;}
+        #tv{display: block;}
+        }
+
