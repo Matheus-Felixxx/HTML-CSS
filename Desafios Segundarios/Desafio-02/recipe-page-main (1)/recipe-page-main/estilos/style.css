@@ -6,8 +6,12 @@
         padding: 0px;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
+    body{
+        overflow-x: hidden;
+    }
     img{
-        height: 14.2em;
+        height: 100%;
+        width: 100%;
     }
     header > p, header  h1{
         margin: 10px;
@@ -15,6 +19,7 @@
     }
     header > h1{
         font-size: 3em;
+        font-weight: normal;
     }
     header p{
         font-size: 1.6em;
@@ -31,7 +36,7 @@
         margin: 15px;
         height: 200px;
         width: 300px;
-        transform: translate(50px);
+        transform: translate(120px);
         
     }
     .lista{
@@ -56,10 +61,105 @@
     .lista3::marker{
         color: hsl(332, 51%, 32%);
     }
-    .Ingre{
-        margin: 30px;
-        padding: 20px;
-
+    #ingredients{
+        color: hsl(14, 45%, 36%);
+        font-size: 40px;
+        text-align: left;
+        margin: 10px;
+        font-weight: normal;
     }
-
+    #list1{
+        margin: 10px;
+        font-size: 18px;
+        color: hsl(24, 5%, 18%);
+    }
+    #list2{
+        margin: 10px;
+        font-size: 18px;
+        color: hsl(24, 5%, 18%);
+    }
+    #list3{
+        margin: 10px;
+        font-size: 18px;
+        color: hsl(24, 5%, 18%);
+    }
+    #list4{
+        margin: 10px;
+        font-size: 18px;
+        color: hsl(24, 5%, 18%);
+    }
+    #list5{
+        margin: 10px;
+        padding-bottom: 10px;
+        font-size: 18px;
+        color: hsl(24, 5%, 18%);
+    }
+    #list1::marker{
+        color: hsl(14, 45%, 36%);
+    }
+    #list2::marker{
+        color: hsl(14, 45%, 36%);
+    }
+    #list3::marker{
+        color: hsl(14, 45%, 36%);
+    }
+    #list4::marker{
+        color: hsl(14, 45%, 36%);
+    }
+    #list5::marker{
+        color: hsl(14, 45%, 36%);
+    }
+    .instruções{
+        color: hsl(14, 45%, 36%);
+        font-size: 40px;
+        margin: 10px;
+        font-weight: normal;
+    }
+    ol > li{
+        font-size: 16px;
+        margin: 10px;
+        padding: 10px;
+        list-style-position: inside;
+        color: hsl(24, 5%, 18%);
+    }
+    .instlist::marker{
+        color: hsl(14, 45%, 36%);
+        font-weight: bolder;
+    }
+    .nutri{
+        font-weight: normal;
+        color: hsl(14, 45%, 36%);
+        font-size: 40px;
+        margin: 10px;
+        font-weight: normal;
+    }
+    article > p{
+        margin: 10px;
+        color: hsl(24, 5%, 18%);
+    }
+    .listn{
+        columns: 2;
+        list-style: none;
+        text-align: center;
+    }
+    .quantia{
+        color: hsl(14, 45%, 36%);
+        font-weight: bolder;
+    }
+    .nutrient{
+        color: hsl(24, 5%, 18%);
+        font-weight: bolder;
+    }
+}
+@media screen and (max-width: 1440px) {
+    body{
+        background-color: hsl(330, 100%, 98%);
+    }
+    div#fundo{
+        background-color: white;
+    }
+    img{
+        width: 10px;
+        height: 10px;
+    }
 }
