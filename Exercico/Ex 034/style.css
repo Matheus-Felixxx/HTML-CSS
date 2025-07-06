@@ -1,0 +1,33 @@
+@charset "UFT-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    background: url(jerusalem.jpg) no-repeat center;
+    background-size: contain;
+    width: 500px;   /* tamanho fixo */
+    height: 500px;  /* tamanho fixo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img:hover{
+    background: url(jerusalem.jpg) no-repeat center;
+    background-size: cover;
+}
