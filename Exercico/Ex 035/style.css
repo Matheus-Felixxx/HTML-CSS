@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+* { /*Reset*/
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.back { 
+    width: 100vw; /*Deixa o background visivel*/
+    height: 100vh;
+    background: linear-gradient(to right, red, orange, yellow, green, cyan, red);
+    background-size: 1200% 100%;
+    animation: back 15s ease infinite;
+}
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3rem;
+    text-shadow: 1px 1px 3px black;
+}
+
+@keyframes back {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
