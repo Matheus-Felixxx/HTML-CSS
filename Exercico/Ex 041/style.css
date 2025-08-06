@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.link{
+    width: 200px;
+    height: 200px;
+    box-shadow: 0px 0px 8px #0000005d;
+    margin: 0px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    font-size: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.link1{
+    color: orangered;
+}
+
+.link2{
+    color: blueviolet;
+}
+
+.link3{
+    color: rgb(113, 255, 47);
+}
+
+.link:hover svg{
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.link1::before{
+    content: "";
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+    position: absolute;
+    left: -120px;
+    top: 110%;
+    background-color: orangered;
+}
+
+.link2::before{
+    content: "";
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+    position: absolute;
+    left: -120px;
+    top: 110%;
+    background-color: blueviolet;
+}
+
+.link3::before{
+    content: "";
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+    position: absolute;
+    left: -120px;
+    top: 110%;
+    background-color: greenyellow;
+}
+
+.link:hover::before{
+    animation: anda .5s ;
+    left: 0px;
+    top: 0%;
+}
+
+@keyframes anda{
+    0%{
+        left: -120px;
+        top: 110%;
+    }
+    50%{
+         left: 15%;
+         top: -25%;
+    }
+    100%{
+         left: 0px;
+         top: 0%; 
+    }
+} 
