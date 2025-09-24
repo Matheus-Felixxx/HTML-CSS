@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzaria Paulão Fera</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background: #fffdf7;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* ================= MENU ================= */
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #8b0000;
+      padding: 20px 30px; /* Aumentei o padding */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+      gap: 50px; /* Aumentei o gap */
+      min-height: 80px; /* Altura mínima aumentada */
+    }
+
+    .menu img {
+      height: 55px; /* Aumentei a logo */
+      transition: transform 0.3s ease;
+    }
+
+    .menu img:hover {
+      transform: scale(1.1);
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 40px; /* Aumentei o espaçamento entre links */
+    }
+
+    .menu-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      padding: 12px 20px; /* Aumentei o padding */
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+      font-size: 1.1rem; /* Aumentei a fonte */
+    }
+
+    .menu-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .menu-links a:hover::before {
+      left: 100%;
+    }
+
+    .menu-links a:hover {
+      color: #ffcc00;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+    }
+
+    /* Botão do menu (mobile) */
+    .menu-btn {
+      display: none;
+      font-size: 2rem; /* Aumentei o botão */
+      color: #fff;
+      cursor: pointer;
+      position: absolute;
+      right: 30px;
+      top: 20px; /* Ajustei a posição */
+      transition: transform 0.3s ease;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .menu-btn:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-btn.active {
+      transform: rotate(90deg);
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 120px 20px; /* Aumentei o padding */
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                  url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 3.5rem; /* Aumentei o título */
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    header p {
+      font-size: 1.8rem; /* Aumentei o subtítulo */
+      font-weight: 300;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* ================= SEÇÕES ================= */
+    section {
+      scroll-margin-top: 100px; /* Espaço para o menu fixo */
+    }
+
+    /* Seção Início */
+    .inicio {
+      background: #fff3e0;
+      padding: 40px; /* Aumentei o padding */
+      border-left: 8px solid #ff9800; /* Aumentei a borda */
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 30px 0;
+    }
+
+    .inicio:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .inicio h2 {
+      color: #8b0000;
+      margin-bottom: 20px;
+      font-size: 2.2rem; /* Aumentei o título */
+    }
+
+    .inicio p {
+      font-size: 1.1rem; /* Aumentei o texto */
+      line-height: 1.8;
+    }
+
+    /* ================= CARDÁPIO ================= */
+    .cardapio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Aumentei o minmax */
+      gap: 35px; /* Aumentei o gap */
+      margin: 40px 0;
+    }
+
+    .cardapio > h2 {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.8rem; /* Aumentei o título */
+      color: #8b0000;
+    }
+
+    /* Cada pizza */
+    .cardapio div {
+      background: white;
+      padding: 25px; /* Aumentei o padding */
+      border-radius: 15px;
+      border: 2px solid #f0f0f0;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .cardapio div:nth-child(2) { animation-delay: 0.1s; }
+    .cardapio div:nth-child(3) { animation-delay: 0.2s; }
+    .cardapio div:nth-child(4) { animation-delay: 0.3s; }
+    .cardapio div:nth-child(5) { animation-delay: 0.4s; }
+    .cardapio div:nth-child(6) { animation-delay: 0.5s; }
+    .cardapio div:nth-child(7) { animation-delay: 0.6s; }
+    .cardapio div:nth-child(8) { animation-delay: 0.7s; }
+    .cardapio div:nth-child(9) { animation-delay: 0.8s; }
+
+    .cardapio div:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cardapio div h2 {
+      color: #d32f2f;
+      margin-bottom: 15px;
+      font-size: 1.7rem; /* Aumentei o título */
+      transition: color 0.3s ease;
+    }
+
+    .cardapio div:hover h2 {
+      color: #8b0000;
+    }
+
+    .cardapio div p {
+      color: #555;
+      margin-bottom: 20px;
+      font-size: 1.05rem; /* Aumentei o texto */
+      line-height: 1.6;
+    }
+
+    .cardapio div img {
+      max-width: 100%;
+      height: 220px; /* Aumentei a altura */
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 15px;
+      transition: all 0.4s ease;
+      filter: brightness(0.9);
+    }
+
+    .cardapio div:hover img {
+      transform: scale(1.1);
+      filter: brightness(1);
+    }
+
+    /* Seção História */
+    .historia {
+      background: #f8f8f8;
+      padding: 40px;
+      border-radius: 12px;
+      margin: 40px 0;
+      border-right: 8px solid #8b0000;
+    }
+
+    .historia h2 {
+      color: #8b0000;
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+    }
+
+    .historia p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* Seção Contato */
+    .contato {
+      background: #fff3e0;
+      padding: 40px;
+      border-radius: 12px;
+      margin: 40px 0;
+      border-left: 8px solid #ff9800;
+    }
+
+    .contato h2 {
+      color: #8b0000;
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+    }
+
+    .contato p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    /* ================= RODAPÉ ================= */
+    footer {
+      background: #8b0000;
+      color: #fff;
+      text-align: center;
+      padding: 30px 15px; /* Aumentei o padding */
+      margin-top: 60px;
+      transition: background 0.5s ease;
+    }
+
+    footer:hover {
+      background: #a52a2a;
+    }
+
+    footer p {
+      margin: 8px 0; /* Aumentei a margem */
+      font-size: 1.05rem; /* Aumentei a fonte */
+      transition: transform 0.3s ease;
+    }
+
+    footer:hover p {
+      transform: scale(1.02);
+    }
+
+    /* ================= ANIMAÇÕES ================= */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= RESPONSIVIDADE ================= */
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 3rem;
+      }
+
+      header p {
+        font-size: 1.5rem;
+      }
+
+      main {
+        padding: 20px 5%;
+      }
+      
+      .menu {
+        gap: 30px;
+        min-height: 70px;
+      }
+      
+      .menu-links a {
+        font-size: 1rem;
+        padding: 10px 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        justify-content: space-between;
+        gap: 0;
+        min-height: 70px;
+        padding: 15px 20px;
+      }
+      
+      .menu-btn {
+        display: block;
+      }
+
+      .menu-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+        background: #8b0000;
+        padding: 15px 0;
+        text-align: center;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .menu-links.active {
+        max-height: 350px;
+        opacity: 1;
+      }
+
+      .menu-links a {
+        margin: 12px 0;
+        padding: 15px;
+        transform: translateX(-20px);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        font-size: 1.1rem;
+      }
+
+      .menu-links.active a {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .menu-links a:nth-child(1) { transition-delay: 0.1s; }
+      .menu-links a:nth-child(2) { transition-delay: 0.2s; }
+      .menu-links a:nth-child(3) { transition-delay: 0.3s; }
+      .menu-links a:nth-child(4) { transition-delay: 0.4s; }
+
+      header {
+        padding: 100px 20px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.3rem;
+      }
+      
+      section {
+        scroll-margin-top: 80px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 80px 15px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+
+      .cardapio {
+        grid-template-columns: 1fr;
+      }
+
+      .cardapio div img {
+        height: 180px;
+      }
+      
+      .menu {
+        min-height: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- MENU -->
+  <nav class="menu">
+    <img src="https://cdn-icons-png.flaticon.com/512/6978/6978255.png" alt="Logo Pizzaria">
+    <div class="menu-btn">☰</div>
+    <div class="menu-links">
+      <a href="#inicio">Início</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#historia">História</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="inicio">
+    <h1>Seja Bem-Vindo</h1>
+    <p>Pizzaria Paulão Fera</p>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <section class="inicio" id="inicio-section">
+      <h2>Início</h2>
+      <p>Há mais de 20 anos servindo as melhores pizzas da região! Na Pizzaria Paulão Fera, nossa paixão é criar pizzas artesanais com ingredientes frescos e de alta qualidade. Venha experimentar o sabor autêntico da pizza italiana com um toque brasileiro.</p>
+      <p>Nosso compromisso é oferecer não apenas uma refeição, mas uma experiência gastronômica memorável. Cada pizza é preparada com carinho e dedicação, usando receitas que passaram de geração em geração.</p>
+    </section>
+
+    <section class="cardapio" id="cardapio">
+      <h2>Cardápio</h2>
+
+      <div>
+        <h2>Pizza de Mussarela</h2>
+        <p>Mussarela de primeira qualidade, molho de tomate caseiro e orégano. Simplesmente deliciosa!</p>
+        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Pizza de Mussarela">
+      </div>
+
+      <div>
+        <h2>Pizza de Calabresa</h2>
+        <p>Calabresa fatiada, cebola, mussarela e nosso molho especial. Um clássico brasileiro!</p>
+        <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Pizza de Calabresa">
+      </div>
+
+      <div>
+        <h2>Pizza de Frango</h2>
+        <p>Frango desfiado temperado, catupiry, milho verde e mussarela. Uma combinação incrível!</p>
+        <img src="style/Imagens/frago.jpg" alt="Pizza de Frango">
+      </div>
+
+      <div>
+        <h2>Pizza de Brigadeiro</h2>
+        <p>Para os amantes de doces: brigadeiro cremoso, granulado e morangos frescos. Uma sobremesa irresistível!</p>
+        <img src="style/Imagens/pizza-de-brigadeiro.jpg" alt="Pizza de Brigadeiro">
+      </div>
+
+      <div>
+        <h2>Pizza de Pudim</h2>
+        <p>Pudim cremoso, calda de caramelo e uma pitada de canela. A sobremesa perfeita para finalizar a refeição!</p>
+        <img src="style/Imagens/pizza-de-pudim.webp" alt="Pizza de Pudim">
+      </div>
+
+      <div>
+        <h2>Pizza de Ovo com Feijão</h2>
+        <p>Uma combinação brasileira: feijão temperado, ovos, bacon e queijo. Para os mais tradicionais!</p>
+        <img src="style/Imagens/ovocomfeijão.jpg" alt="Pizza de Ovo com Feijão">
+      </div>
+
+      <div>
+        <h2>Pizza de Peixe</h2>
+        <p>Filé de peixe grelhado, molho especial, tomate e cebola. Uma opção leve e saborosa!</p>
+        <img src="style/Imagens/peixedepeixe.jpg" alt="Pizza de Peixe">
+      </div>
+           
+      <div>
+        <h2>Pizza de Sushi</h2>
+        <p>Para os mais ousados: salmão, arroz, cream cheese e algas. Uma fusão oriental incrível!</p>
+        <img src="style/Imagens/peixadesushi.jpeg" alt="Pizza de Sushi">
+      </div>
+    </section>
+
+    <section class="historia" id="historia">
+      <h2>Nossa História</h2>
+      <p>A Pizzaria Paulão Fera nasceu em 2003, quando o fundador Paulo Silva decidiu transformar sua paixão por pizzas em um negócio familiar. Começamos com uma pequena loja no centro da cidade e hoje somos referência em qualidade e sabor.</p>
+      <p>Nossa missão sempre foi oferecer o melhor da gastronomia italiana com um toque brasileiro, usando ingredientes frescos e receitas exclusivas que conquistaram nossa clientela ao longo dos anos.</p>
+    </section>
+
+    <section class="contato" id="contato">
+      <h2>Contato</h2>
+      <p>Estamos localizados no coração da cidade, prontos para atendê-lo!</p>
+      <p><strong>Endereço:</strong> Rua das Pizzas, 123 - Centro</p>
+      <p><strong>Telefone:</strong> (11) 1234-5678</p>
+      <p><strong>Horário de Funcionamento:</strong> Terça a Domingo, das 18h às 23h</p>
+      <p><strong>Delivery:</strong> Disponível através dos principais aplicativos</p>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>© 2025 Pizzaria Paulão Fera - Todos os direitos reservados</p>
+    <p>Telefone: (11) 1234-5678 | Endereço: Rua das Pizzas, 123 - Centro</p>
+  </footer>
+
+  <!-- JS MENU MOBILE -->
+  <script>
+    const btn = document.querySelector(".menu-btn");
+    const links = document.querySelector(".menu-links");
+
+    // Menu mobile
+    btn.addEventListener("click", () => {
+      links.classList.toggle("active");
+      btn.classList.toggle("active");
+    });
+
+    // Fechar menu ao clicar em um link (mobile)
+    document.querySelectorAll('.menu-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          links.classList.remove('active');
+          btn.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

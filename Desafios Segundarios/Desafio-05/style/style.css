@@ -1,0 +1,357 @@
+   @charset "UTF-8";
+   
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background: #fffdf7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ================= MENU ================= */
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #8b0000;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .menu img {
+      height: 45px;
+      transition: transform 0.3s ease;
+    }
+
+    .menu img:hover {
+      transform: scale(1.1);
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .menu-links a:hover::before {
+      left: 100%;
+    }
+
+    .menu-links a:hover {
+      color: #ffcc00;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Botão do menu (mobile) */
+    .menu-btn {
+      display: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      position: absolute;
+      right: 30px;
+      top: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .menu-btn.active {
+      transform: rotate(90deg);
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                  url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      animation: fadeIn 1s ease;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* ================= MAIN ================= */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      padding: 40px 8%;
+    }
+
+    /* Seção Início */
+    .inicio {
+      background: #fff3e0;
+      padding: 25px;
+      border-left: 6px solid #ff9800;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .inicio:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .inicio h2 {
+      color: #8b0000;
+      margin-bottom: 15px;
+    }
+
+    /* ================= CARDÁPIO ================= */
+    .cardapio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .cardapio > h2 {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2.5rem;
+      color: #8b0000;
+    }
+
+    /* Cada pizza */
+    .cardapio div {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .cardapio div:nth-child(2) { animation-delay: 0.1s; }
+    .cardapio div:nth-child(3) { animation-delay: 0.2s; }
+    .cardapio div:nth-child(4) { animation-delay: 0.3s; }
+    .cardapio div:nth-child(5) { animation-delay: 0.4s; }
+    .cardapio div:nth-child(6) { animation-delay: 0.5s; }
+    .cardapio div:nth-child(7) { animation-delay: 0.6s; }
+    .cardapio div:nth-child(8) { animation-delay: 0.7s; }
+    .cardapio div:nth-child(9) { animation-delay: 0.8s; }
+
+    .cardapio div:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .cardapio div h2 {
+      color: #d32f2f;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .cardapio div:hover h2 {
+      color: #8b0000;
+    }
+
+    .cardapio div p {
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .cardapio div img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 15px;
+      transition: all 0.4s ease;
+      filter: brightness(0.9);
+    }
+
+    .cardapio div:hover img {
+      transform: scale(1.08);
+      filter: brightness(1);
+    }
+
+    /* ================= RODAPÉ ================= */
+    footer {
+      background: #8b0000;
+      color: #fff;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 50px;
+      transition: background 0.5s ease;
+    }
+
+    footer:hover {
+      background: #a52a2a;
+    }
+
+    footer p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+      transition: transform 0.3s ease;
+    }
+
+    footer:hover p {
+      transform: scale(1.02);
+    }
+
+    /* ================= ANIMAÇÕES ================= */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= RESPONSIVIDADE ================= */
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.2rem;
+      }
+
+      main {
+        padding: 20px 5%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        justify-content: space-between;
+        gap: 0;
+      }
+      
+      .menu-btn {
+        display: block;
+      }
+
+      .menu-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        background: #8b0000;
+        padding: 10px 0;
+        text-align: center;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .menu-links.active {
+        max-height: 300px;
+        opacity: 1;
+      }
+
+      .menu-links a {
+        margin: 10px 0;
+        padding: 12px;
+        transform: translateX(-20px);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      .menu-links.active a {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .menu-links a:nth-child(1) { transition-delay: 0.1s; }
+      .menu-links a:nth-child(2) { transition-delay: 0.2s; }
+      .menu-links a:nth-child(3) { transition-delay: 0.3s; }
+      .menu-links a:nth-child(4) { transition-delay: 0.4s; }
+
+      header {
+        padding: 70px 20px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 60px 15px;
+      }
+
+      header h1 {
+        font-size: 1.7rem;
+      }
+
+      header p {
+        font-size: 0.9rem;
+      }
+
+      .cardapio {
+        grid-template-columns: 1fr;
+      }
+
+      .cardapio div img {
+        height: 160px;
+      }
+    }
